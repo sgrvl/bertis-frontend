@@ -1,28 +1,25 @@
 import React from "react";
-import styled from "styled-components";
 import logo from "../../images/bertis_logo.png";
+import { ReactComponent as Cart } from "../../images/shopping-cart.svg";
+import styled from "styled-components";
 
-const List = styled.ul`
+const Nav = styled.nav`
 	display: flex;
+	justify-content: space-between;
 	align-items: center;
 	list-style: none;
+	margin: 0;
+	padding: 0;
 `;
 
-const Item = styled.li`
-	margin: 1em;
-`;
+const Logo = styled.img``;
 
 const Header = () => {
 	return (
-		<nav>
-			<List>
-				<Item>
-					<img src={logo} alt="Logo Bertis" />
-				</Item>
-				<Item>Categories</Item>
-				<Item>Back to main</Item>
-			</List>
-		</nav>
+		<Nav>
+			<Logo src={logo} alt="Logo Bertis" />
+			<Cart />
+		</Nav>
 	);
 };
 
