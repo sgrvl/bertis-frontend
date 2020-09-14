@@ -9,8 +9,7 @@ const client = sanityClient({
 });
 
 export const useFetch = (setFetch) => {
-	const query =
-		"*[_type in ['product', 'category']]{title, _type, category, image, description, price, _createdAt }";
+	const query = "*[_type in ['product']]";
 
 	useEffect(() => {
 		client.fetch(query).then((res) => setFetch(res));
@@ -24,79 +23,59 @@ export const urlFor = (source) => {
 	return builder.image(source);
 };
 
-export const splitCatPro = (fetch, choice) => {
-	if (choice === "cat") {
-		return fetch.filter((obj) => obj._type === "category");
-	} else {
-		return fetch.filter((obj) => obj._type === "product");
-	}
-};
-
 export const getClient = (id) => client.getDocument(id);
-/* useEffect(() => {
-		let temp;
-		client.getDocument(id).then((res) => (temp = res));
-		return temp;
-		// eslint-disable-next-line
-	}, []); */
 
 export const placeholder = [
 	{
-		_createdAt: "2020-09-11T16:48:10Z",
-		_type: "category",
-		title: "Stickers",
-	},
-	{
-		_createdAt: "2020-09-11T16:48:04Z",
-		_type: "category",
-		title: "Posters",
-	},
-	{
-		_createdAt: "2020-09-11T17:05:56Z",
+		_createdAt: "2020-09-14T20:57:54Z",
+		_id: "8dafc4cb-23f1-478d-b0fc-2360032e4c97",
+		_rev: "KUT3Su9licV7J9JxVIHcs2",
 		_type: "product",
-		category: {
-			_ref: "134d80e7-54cb-47a2-9703-899664793322",
-			_type: "reference",
-		},
+		_updatedAt: "2020-09-14T20:57:54Z",
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 		image: {
 			_type: "image",
 			asset: {
-				_ref: "image-4a8e69de583e7e9ea1d4f66a96ce0fa5902d0f9a-525x525-png",
+				_ref: "image-e82840e24287f0aec4ed343b09c7175ca444b49b-1080x608-jpg",
 				_type: "reference",
 			},
 		},
-		price: 9.99,
-		title: "Sticker_2",
-	},
-	{
-		_createdAt: "2020-09-11T16:39:10Z",
-		_type: "product",
-		category: {
-			_ref: "134d80e7-54cb-47a2-9703-899664793322",
+		price: {
+			_ref: "8db9d190-ce00-4c71-823b-4c1ef16cc912",
 			_type: "reference",
 		},
+		title: "Poster_7",
+	},
+	{
+		_createdAt: "2020-09-14T20:57:28Z",
+		_id: "a5c98a51-295d-41a3-acd3-5fbd8f3d65af",
+		_rev: "TREZbCeJCRx4WmeIxO9GQQ",
+		_type: "product",
+		_updatedAt: "2020-09-14T20:57:28Z",
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 		image: {
 			_type: "image",
 			asset: {
-				_ref: "image-7d2a89145f350995e259f049d3344531e92b70d6-416x524-png",
+				_ref: "image-b281d832ce1e2d590193146ebe586a3b7a2e0b67-1080x720-jpg",
 				_type: "reference",
 			},
 		},
-		price: 9.99,
-		title: "Sticker_1",
+		price: {
+			_ref: "8db9d190-ce00-4c71-823b-4c1ef16cc912",
+			_type: "reference",
+		},
+		title: "Poster_6",
 	},
 	{
 		_createdAt: "2020-09-14T00:41:35Z",
+		_id: "59807130-72ec-4857-8a6c-1da508748c14",
+		_rev: "TREZbCeJCRx4WmeIxO9CzV",
 		_type: "product",
-		category: {
-			_ref: "7d981234-c1b4-40a4-80f6-60c30dc481c0",
-			_type: "reference",
-		},
-		description: "sdfwesfxgs",
+		_updatedAt: "2020-09-14T20:57:00Z",
+		description:
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 		image: {
 			_type: "image",
 			asset: {
@@ -104,35 +83,18 @@ export const placeholder = [
 				_type: "reference",
 			},
 		},
-		price: 99.99,
+		price: {
+			_ref: "8db9d190-ce00-4c71-823b-4c1ef16cc912",
+			_type: "reference",
+		},
 		title: "Poster_5",
 	},
 	{
-		_createdAt: "2020-09-11T16:17:14Z",
-		_type: "product",
-		category: {
-			_ref: "7d981234-c1b4-40a4-80f6-60c30dc481c0",
-			_type: "reference",
-		},
-		description:
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-		image: {
-			_type: "image",
-			asset: {
-				_ref: "image-b70c1c8703728ae77abebb6947fcfca8a07812f3-864x1080-jpg",
-				_type: "reference",
-			},
-		},
-		price: 99.99,
-		title: "Poster_1",
-	},
-	{
 		_createdAt: "2020-09-13T23:25:14Z",
+		_id: "60c18791-51b8-44cd-b1cf-9b1018b4982c",
+		_rev: "TREZbCeJCRx4WmeIxO9C72",
 		_type: "product",
-		category: {
-			_ref: "7d981234-c1b4-40a4-80f6-60c30dc481c0",
-			_type: "reference",
-		},
+		_updatedAt: "2020-09-14T20:56:55Z",
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 		image: {
@@ -142,35 +104,18 @@ export const placeholder = [
 				_type: "reference",
 			},
 		},
-		price: 99.99,
+		price: {
+			_ref: "8db9d190-ce00-4c71-823b-4c1ef16cc912",
+			_type: "reference",
+		},
 		title: "Poster_4",
 	},
 	{
-		_createdAt: "2020-09-11T16:32:11Z",
-		_type: "product",
-		category: {
-			_ref: "7d981234-c1b4-40a4-80f6-60c30dc481c0",
-			_type: "reference",
-		},
-		description:
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-		image: {
-			_type: "image",
-			asset: {
-				_ref: "image-80083e2c8338265e1d014787d50a64cc90257e3e-720x1080-jpg",
-				_type: "reference",
-			},
-		},
-		price: 99.99,
-		title: "Poster_2",
-	},
-	{
 		_createdAt: "2020-09-11T18:30:55Z",
+		_id: "9025a49d-e646-42be-90fc-f3dcead9c03c",
+		_rev: "xCSeLm1tjZ2GZgEiYj7Voh",
 		_type: "product",
-		category: {
-			_ref: "7d981234-c1b4-40a4-80f6-60c30dc481c0",
-			_type: "reference",
-		},
+		_updatedAt: "2020-09-14T20:56:42Z",
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 		image: {
@@ -180,7 +125,52 @@ export const placeholder = [
 				_type: "reference",
 			},
 		},
-		price: 99.99,
+		price: {
+			_ref: "8db9d190-ce00-4c71-823b-4c1ef16cc912",
+			_type: "reference",
+		},
 		title: "Poster_3",
+	},
+	{
+		_createdAt: "2020-09-11T16:32:11Z",
+		_id: "7bb4ae72-44e5-4127-a660-b39dcba34b44",
+		_rev: "KUT3Su9licV7J9JxVIHaOR",
+		_type: "product",
+		_updatedAt: "2020-09-14T20:56:30Z",
+		description:
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+		image: {
+			_type: "image",
+			asset: {
+				_ref: "image-80083e2c8338265e1d014787d50a64cc90257e3e-720x1080-jpg",
+				_type: "reference",
+			},
+		},
+		price: {
+			_ref: "8db9d190-ce00-4c71-823b-4c1ef16cc912",
+			_type: "reference",
+		},
+		title: "Poster_2",
+	},
+	{
+		_createdAt: "2020-09-11T16:17:14Z",
+		_id: "5d0ec00c-fc0d-44b4-b4af-2d871fcf8e89",
+		_rev: "KUT3Su9licV7J9JxVIHafh",
+		_type: "product",
+		_updatedAt: "2020-09-14T20:56:38Z",
+		description:
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+		image: {
+			_type: "image",
+			asset: {
+				_ref: "image-b70c1c8703728ae77abebb6947fcfca8a07812f3-864x1080-jpg",
+				_type: "reference",
+			},
+		},
+		price: {
+			_ref: "8db9d190-ce00-4c71-823b-4c1ef16cc912",
+			_type: "reference",
+		},
+		title: "Poster_1",
 	},
 ];
