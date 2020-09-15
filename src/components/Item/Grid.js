@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Item from "./Item";
+import Size from "./Size";
 import styled from "styled-components";
 import { ReactComponent as AddCart } from "../../images/add_shopping_cart.svg";
 import { getClient } from "../utils";
-
-console.log(Math.round(window.innerWidth / 3));
 
 const StyledGrid = styled.div`
 	display: flex;
@@ -42,33 +41,48 @@ const Info = styled.div`
 	}
 `;
 
-const Grid = ({ fetch }) => {
-	/* For pricing
+const Grid = ({ fetch, setScroll }) => {
 	const [price, setPrice] = useState([]);
 	useEffect(() => {
 		getClient(fetch[0].price._ref).then((res) => setPrice(res));
+		// eslint-disable-next-line
 	}, []);
-	console.log(price.priceDimension); */
+	const [selected, setSelected] = useState(null);
+
+	const handleClick = (i) => {
+		setSelected(i.image);
+		setScroll(false);
+	};
 
 	return (
-		<StyledGrid>
-			{fetch
-				.sort((a, b) => (a._createdAt > b._createdAt ? -1 : 1))
-				.map((i, index) => {
-					return (
-						<ItemWrap key={`Item #${index}`}>
-							<Info id="info">
-								<div>{i.title}</div>
-								<AddCart id="cart" />
-							</Info>
-							<Item
-								url={i.image}
-								width={Math.round(window.innerWidth / 3) - 50}
-							/>
-						</ItemWrap>
-					);
-				})}
-		</StyledGrid>
+		<>
+			{selected && (
+				<Size
+					selected={selected}
+					setSelected={setSelected}
+					setScroll={setScroll}
+					price={price.priceDimension}
+				/>
+			)}
+			<StyledGrid>
+				{fetch
+					.sort((a, b) => (a._createdAt > b._createdAt ? -1 : 1))
+					.map((i, index) => {
+						return (
+							<ItemWrap key={`Item #${index}`}>
+								<Info id="info">
+									<div>{i.title}</div>
+									<AddCart id="cart" onClick={() => handleClick(i)} />
+								</Info>
+								<Item
+									url={i.image}
+									width={Math.round(window.innerWidth / 3) - 50}
+								/>
+							</ItemWrap>
+						);
+					})}
+			</StyledGrid>
+		</>
 	);
 };
 
